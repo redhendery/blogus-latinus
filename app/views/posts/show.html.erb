@@ -1,0 +1,44 @@
+  <% if user_signed_in? %>
+  <div class="columns">
+    <div class="column">
+        <%= link_to 'Create Post', new_post_path, class: 'button is-success is-fullwidth' %>
+      </div>
+    <div class="column">
+        <%= link_to 'Edit Post', edit_post_path(@post), class: 'button is-warning is-fullwidth' %>
+      </div>
+      <div class="column">
+        <%= link_to 'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-fullwidth' %>
+    </div>
+  </div>
+<% end %>
+
+<h1 class="title is-1">
+  <%= @post.title %>
+</h1>
+
+<p class="is-size-7 has-text-grey">
+  Posted At: <%= @post.created_at.strftime('%H:%M %P, %B %d, %Y') %>
+</p>
+<p class="is-size-7 has-text-grey">
+  Updated At: <%= @post.updated_at.strftime('%H:%M %P, %B, %d, %Y') %>
+</p>
+<br>
+<p>
+  <%= @post.body %>
+</p>
+
+<% if user_signed_in? %>
+  <section class="section comments">
+    <div class="container">
+      <h2 class="subtitle is-5">
+        <strong><%= @post.comments.count %></strong> Comments
+      </h2>
+      <%= render @post.comments %>
+      <div class="comment-form">
+        <hr />
+        <h3 class="subtitle is-3">Leave a reply</h3>
+        <%= render partial: 'comments/form', locals: { comment: @post.comments.build } %>
+      </div>
+    </div>
+  </section>
+<% end %>

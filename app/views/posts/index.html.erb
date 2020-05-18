@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <%= link_to 'Make A Post', new_post_path, class: 'button is-success is-fullwidth is-medium' %>
+    </div>
+  </div>
+<% end %>
+
+<h1 class="title is-1">Posts</h1>
+<hr>
+<%= paginate @posts %>
+<hr>
+<%= render 'shared/post_index' %>
