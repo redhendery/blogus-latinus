@@ -1,0 +1,15 @@
+<div class="columns">
+  <% unless current_page?(new_post_path) %>
+    <div class="column">
+      <%= link_to 'Create A New Post', new_post_path, class: 'button is-success is-fullwidth' %>
+    </div>
+  <% end %>
+  <% unless current_page?(edit_post_path) %>
+    <div class="column">
+      <%= link_to 'Edit Post', edit_post_path(@post), class: 'button is-warning is-fullwidth' %>
+    </div>
+  <% end %>
+  <div class="column">
+    <%= link_to 'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-fullwidth' %>
+  </div>
+</div>

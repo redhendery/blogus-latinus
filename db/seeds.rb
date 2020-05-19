@@ -1,14 +1,51 @@
+user = User.create!(
+  username: 'Mike Michaelson',
+  email: 'user@email.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
+
+15.times do |n|
+  username = Faker::Name.unique.name
+  email = Faker::Internet.email
+  password = 'password'
+  password_confirmation = password
+  User.create!(
+    username: username,
+    email: email,
+    password: password,
+    password_confirmation: password
+  )
+end
+
+p "added #{User.count} users"
+
 50.times do |n|
   title = Faker::Book.title
-  body = Faker::Lorem.sentences(number: 30)
+  body = Faker::Lorem.paragraph(sentence_count: 20, supplemental: true)
+  user_id = User.pluck(:id).sample
+  created_at = Faker::Time.between(from: DateTime.now - 1.year, to: DateTime.now)
+  updated_at = Faker::Time.between(from: DateTime.now - 1.year, to: DateTime.now)
   Post.create!(
     title: title,
-    body: body
+    body: body,
+    user_id: user_id,
+    created_at: created_at,
+    updated_at: updated_at
   )
 end
 
 p "added #{Post.count} posts"
 
-user = User.create!(email: 'user@email.com', password: 'password', password_confirmation: 'password')
+500.times do |n|
+  message = Faker::Lorem.paragraph(sentence_count: 3, supplemental: true)
+  post_id = Post.pluck(:id).sample
+  user_id = User.pluck(:id).sample
+  Comment.create!(
+    message: message,
+    post_id: post_id,
+    user_id: user_id,
+  )
+end
 
-p "added #{User.count} users"
+p "added #{Comment.count} comments"

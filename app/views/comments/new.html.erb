@@ -1,5 +1,8 @@
-<h1>New Comment</h1>
+<h1 class="title is-1">New Comment</h1>
 
-<%= render 'form', comment: @comment %>
 
-<%= link_to 'Back', comments_path %>
+<div class="columns is-centered">
+  <div class="column is-5">
+    <%= render 'form', comment: @comment, local: { post: @post } %>
+  </div>
+</div>

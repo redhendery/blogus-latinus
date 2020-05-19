@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
-  <%= @comment.name %>
+  <%= @comment.user.username %>
 </p>
 
 <p>
@@ -12,7 +10,7 @@
 
 <p>
   <strong>Post:</strong>
-  <%= @comment.post_id %>
+  <%= @comment.post.title %>
 </p>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |

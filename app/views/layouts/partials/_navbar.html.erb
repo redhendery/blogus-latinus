@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-brand">
 
-      <%= link_to 'Red Hendery Test Screen', root_path, class: 'navbar-item' %>
+      <%= link_to 'Blogus Latinus', root_path, class: 'navbar-item' %>
 
       <span class="navbar-burger burger" data-target="navMenu">
         <span></span>
@@ -14,9 +14,13 @@
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-end">
         <% if user_signed_in? %>
+          <%= link_to 'About', about_path, class: 'navbar-item' %>
           <%= link_to 'Posts', posts_path, class: 'navbar-item' %>
+          <%= link_to 'My Profile', user_path(current_user), class: 'navbar-item' %>
           <%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: 'navbar-item' %>
         <% else %>
+          <%= link_to 'About', about_path, class: 'navbar-item' %>
+          <%= link_to 'Posts', posts_path, class: 'navbar-item' %>
           <%= link_to 'Sign Up', new_user_registration_url, class: 'navbar-item' %>
           <%= link_to 'Log In', new_user_session_url, class: 'navbar-item' %>
         <% end %>

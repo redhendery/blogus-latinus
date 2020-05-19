@@ -1,8 +1,12 @@
 class User
   include Mongoid::Document
+
+  field :username, type: String
+  validates :username, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :posts
+  has_many :posts, autosave: true, dependent: :destroy
+  has_many :comments, autosave: true, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

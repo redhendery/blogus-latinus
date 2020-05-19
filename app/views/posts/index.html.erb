@@ -1,7 +1,9 @@
+<% provide(:title, 'Posts Index') %>
+
 <% if user_signed_in? %>
   <div class="columns is-centered">
     <div class="column is-5">
-      <%= link_to 'Make A Post', new_post_path, class: 'button is-success is-fullwidth is-medium' %>
+      <%= link_to 'Write New Blog Post', new_post_path, class: 'button is-success is-fullwidth is-medium' %>
     </div>
   </div>
 <% end %>

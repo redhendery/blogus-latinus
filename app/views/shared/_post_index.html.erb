@@ -1,26 +1,36 @@
 <% @posts.each do |post| %>
   <ul>
-    <div class="columns is-vcentered">
+    <p class="is-size-5 has-text-weight-semibold">
+      <%= post.title %>
+    </p>
+    <p class="is-size-7">
+      By: <%= post.user.username %>
+    </p>
+    <p class="is-size-6" style="padding-top:7px;">
+      <%= post.body.truncate(400, omission: '...') %>
+    </p>
+    <div class="columns is-vcentered justify-space-between">
       <div class="column">
-        <p><span class="is-size-6">Title: </span><%= post.title %></p>
-        <p><span class="is-size-6">Body: </span><%= post.body.truncate(400, omission: '...') %></p>
-        <br>
-        <p class="is-size-7 has-text-grey">
+        <p class="is-size-7 has-text-grey" style="padding-top:7px;">
           Posted At: <%= post.created_at.strftime('%H:%M %P, %B %d, %Y') %>
         </p>
         <p class="is-size-7 has-text-grey">
           Updated At: <%= post.updated_at.strftime('%H:%M %P, %B, %d, %Y') %>
         </p>
       </div>
-      <div class="column is-2">
-        <%= link_to 'View Post', post, class: 'button is-link is-fullwidth' %>
-      </div>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && post.user.id == current_user.id %>
+        <div class="column is-2">
+          <%= link_to 'Read Full Post', post, class: 'button is-link is-fullwidth' %>
+        </div>
         <div class="column is-2">
           <%= link_to 'Edit Post', edit_post_path(post), class: 'button is-warning is-fullwidth' %>
         </div>
         <div class="column is-2">
           <%= link_to 'Delete Post', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-fullwidth' %>
+        </div>
+      <% else %>
+        <div class="column is-2 is-pulled-right">
+          <%= link_to 'Read Full Post', post, class: 'button is-link is-fullwidth is-pulled-right' %>
         </div>
       <% end %>
     </div>

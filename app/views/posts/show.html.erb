@@ -1,44 +1,41 @@
-  <% if user_signed_in? %>
-  <div class="columns">
-    <div class="column">
-        <%= link_to 'Create Post', new_post_path, class: 'button is-success is-fullwidth' %>
-      </div>
-    <div class="column">
-        <%= link_to 'Edit Post', edit_post_path(@post), class: 'button is-warning is-fullwidth' %>
-      </div>
-      <div class="column">
-        <%= link_to 'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-fullwidth' %>
-    </div>
-  </div>
+<% provide(:title, @post.title) %>
+
+<% unless current_user.nil? %>
+  <%= render 'post_buttons' if @post.user.id == current_user.id %>
 <% end %>
 
 <h1 class="title is-1">
   <%= @post.title %>
 </h1>
+<p class="is-size-6 has-text-centered is-italic">By <%= @post.user.username %></p>
 
-<p class="is-size-7 has-text-grey">
-  Posted At: <%= @post.created_at.strftime('%H:%M %P, %B %d, %Y') %>
-</p>
-<p class="is-size-7 has-text-grey">
+<p class="is-size-7 has-text-grey has-text-centered" style="padding-top:7px;">
+  Posted At: <%= @post.created_at.strftime('%H:%M %P, %B %d, %Y') %>,
   Updated At: <%= @post.updated_at.strftime('%H:%M %P, %B, %d, %Y') %>
 </p>
 <br>
+
+<h5 class="title is-5">
+  <%= @post.title %>
+</h5>
 <p>
   <%= @post.body %>
 </p>
 
-<% if user_signed_in? %>
-  <section class="section comments">
-    <div class="container">
-      <h2 class="subtitle is-5">
-        <strong><%= @post.comments.count %></strong> Comments
-      </h2>
-      <%= render @post.comments %>
+<section class="section comments">
+  <div class="container">
+    <h2 class="subtitle is-5">
+      <strong><%= @post.comments.count %></strong>
+      Comments
+    </h2>
+    <hr>
+    <%= render @post.comments %>
+    <% if user_signed_in? %>
       <div class="comment-form">
-        <hr />
-        <h3 class="subtitle is-3">Leave a reply</h3>
         <%= render partial: 'comments/form', locals: { comment: @post.comments.build } %>
       </div>
-    </div>
-  </section>
-<% end %>
+    <% else %>
+      <%= link_to 'Sign In to leave a comment', new_user_session_url %>
+    <% end %>
+  </div>
+</section>

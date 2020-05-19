@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
-  resources :comments
   root 'home#index'
+  get '/about', to: 'home#about'
 
-  devise_for :users
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
   resources :posts
-  resources :home, only: %w[index show]
+  resources :users, only: %w[edit show destroy] do
+    member do
+      get :all_posts, path: '/all-posts'
+    end
+  end
+  resources :comments, except: [:index]
 
 end

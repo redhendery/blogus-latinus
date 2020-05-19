@@ -1,23 +1,10 @@
 <%= form_with(model: comment, local: true) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  <%= render 'shared/error_messages', object: form.object %>
 
-      <ul>
-        <% comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <h5 class="title is-5"><%= current_user.username %> join the conversation!</h5>
 
   <div class="field">
-    <%= form.label :name, class: 'label' %>
-    <%= form.text_field :name, required: true, type: 'text', class: 'input' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :message, class: 'label' %>
+    <%= form.label :comment, class: 'label' %>
     <%= form.text_area :message, rows: 8, cols: 40, required: true, type: 'text', class: 'textarea' %>
   </div>
 
@@ -25,7 +12,11 @@
     <%= form.hidden_field :post_id %>
   </div>
 
+  <div class="field">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
   <div class="actions">
-    <%= form.submit class: 'button is-success' %>
+    <%= form.submit 'Leave A Comment', class: 'button is-link is-fullwidth' %>
   </div>
 <% end %>

@@ -1,0 +1,8 @@
+<% provide(:title, 'All Posts By ' + @user.username) %>
+
+<h1 class="title is-1">
+  All Blog Posts By <%= @user.username %>
+</h1>
+<hr>
+
+<%= render 'shared/post_index' %>

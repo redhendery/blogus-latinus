@@ -8,7 +8,7 @@ class Post
   field :body, type: String
 
   validates :title, :body, presence: true
-  has_many :comments, dependent: :destroy
 
-  # belongs_to :user, dependent: :destroy
+  belongs_to :user
+  has_many :comments, dependent: :destroy
 end
