@@ -171,7 +171,7 @@ production:
      # replica set connection setup.
      # Use environment variables or a config file to keep your
      # credentials safe e.g. <%= ENV['MONGODB_URI'] %>.
-     uri: mongodb://heroku_pwbt483s:d89fcjc2ivddped0i5uo8evn29@ds211096.mlab.com:11096/heroku_pwbt483s
+     uri: <%= ENV['MONGODB_URI'] %>
 
      options:
        # The default timeout is 5, which is the time in seconds
