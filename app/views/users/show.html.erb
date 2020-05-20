@@ -17,6 +17,9 @@
 <h1 class="title is-1">
   <%= @user.username %>
 </h1>
+<p class="is-size-5">
+  A Quote From <%= @user.username %>: <span class="is-italic has-text-grey">"<%= @user.about %>"</span>
+</p>
 <hr>
 
 <div class="columns is-vcentered">
