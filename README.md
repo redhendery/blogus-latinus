@@ -34,5 +34,7 @@ https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/
 
 
 You can create a user if you wish to, or there is a user seeded with the database as follows:
+<pre><code>
 username: user@email.com
 password: password
+</pre></code>
