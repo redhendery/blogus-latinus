@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %w[edit update destroy show all_posts]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @posts = @user.posts.limit(3).order(created_at: :desc)
     @comments = @user.comments
@@ -12,7 +16,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User profile has been updated!' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -24,7 +28,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'User account has been deleted. Bye!' }
       format.json { head :no_content }
     end
   end

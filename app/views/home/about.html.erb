@@ -1,3 +1,59 @@
 <% provide(:title, 'About') %>
 
 <h1 class="title is-1">About Blogus Latinus</h1>
+<h6 class="title is-6 has-text-centered">
+  <%= link_to 'Check Out The Code Here', 'https://github.com/redhendery/blogus-latinus', target: 'blank' %>
+</h6>
+
+<br>
+<p>
+  I built this blog site as part of a test screen for a job interview. I was required to build a blog that does exactly what this website does,
+  and less! I got a bit carried away but I'm really happy with how it turned out and I had building it.
+</p>
+<br>
+<p>
+  For me, this was the first time I had used MongoDB,
+  <%= link_to 'a non-relational, NoSQL database', 'https://en.wikipedia.org/wiki/NoSQL', target: 'blank' %>.
+  I had no Active Record layer, no migrations, none of the things I was used to in order to achieve what I needed to.
+  Fortunately, the <%= link_to 'MongoDB docs', 'https://docs.mongodb.com/ruby-driver/master/', target: 'blank' %>
+  are very clear and well written. I completed everything and some of the bonus things in the alloted timeframe.
+</p>
+<br>
+<p>
+  Except for getting an Object to tie to the User that created it. Something I can do with my eyes closed when using a relational database.
+  So if I don't get hired by that firm I get it, but I had to figure out how to solve that problem and learn something,
+  otherwise the whole excercise was a waste of time. I did the test yesterday and I redid it for myself today.
+</p>
+<br>
+<p>
+  So here we are. I built this Blog site based off of the spec from the Test Screen, I used the following technolgies and learnt
+  a bunch of things while doing it! The User names are characters from Silicon Valley, the Blog Post's are Lorem Ipsum, the About
+  User section's are quotes from The IT Crowd and the comments are quotes from Community.
+  Thanks <%= link_to 'Faker!', 'https://github.com/faker-ruby/faker', target: 'blank' %>
+</p>
+
+<br>
+<ul>
+  <li>
+    <%= link_to 'Bulma CSS', 'https://bulma.io/', target: 'blank' %> for styles.
+  </li>
+  <li>
+    <%= link_to 'Webpack', 'https://webpack.js.org/', target: 'blank' %> for bundling it all together.
+  </li>
+  <li>
+    <%= link_to 'MongoDB', 'https://www.mongodb.com/', target: 'blank' %> for the database.
+  </li>
+  <li>
+    <%= link_to 'Devise', 'https://github.com/heartcombo/devise', target: 'blank' %> for user authentication.
+  </li>
+  <li>
+    <%= link_to 'Kaminari', 'https://github.com/kaminari/kaminari', target: 'blank' %> for pagination.
+  </li>
+  <li>
+    <%= link_to 'Heroku', 'https://heroku.com', target: 'blank' %> for hosting.
+  </li>
+  <li>
+    <%= link_to 'Ruby on Rails', 'https://guides.rubyonrails.org/', target: 'blank' %>
+    as my web framework. Version 6.0.2.2, with Ruby version 2.7.1.
+  </li>
+</ul>

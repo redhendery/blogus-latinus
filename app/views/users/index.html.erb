@@ -1,0 +1,21 @@
+<% provide(:title, 'All Users') %>
+
+<h1 class="title is-1" style="padding-bottom:12px;">User Index</h1>
+<hr>
+
+<% @users.each do |user| %>
+  <ul>
+    <div class="columns is-vcentered">
+      <div class="column">
+        <%= link_to user do %>
+          <%= user.username %>
+        <% end %>
+      </div>
+      <div class="column column is-offset-4 is-2">
+        <%= link_to 'View Profile!', user_path(user),
+                class: 'button is-link is-fullwidth' %>
+      </div>
+    </div>
+  </ul>
+  <hr>
+<% end %>

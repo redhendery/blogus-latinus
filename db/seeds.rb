@@ -1,17 +1,20 @@
 user = User.create!(
   username: 'Mike Michaelson',
+  about: 'Yes, my name is Michael Michaelson.',
   email: 'user@email.com',
   password: 'password',
   password_confirmation: 'password'
 )
 
-15.times do |n|
-  username = Faker::Name.unique.name
+10.times do |n|
+  username = Faker::TvShows::SiliconValley.unique.character
+  about = Faker::TvShows::TheITCrowd.quote
   email = Faker::Internet.email
   password = 'password'
   password_confirmation = password
   User.create!(
     username: username,
+    about: about,
     email: email,
     password: password,
     password_confirmation: password
@@ -20,7 +23,7 @@ end
 
 p "added #{User.count} users"
 
-50.times do |n|
+100.times do |n|
   title = Faker::Book.title
   body = Faker::Lorem.paragraph(sentence_count: 20, supplemental: true)
   user_id = User.pluck(:id).sample
@@ -37,8 +40,8 @@ end
 
 p "added #{Post.count} posts"
 
-500.times do |n|
-  message = Faker::Lorem.paragraph(sentence_count: 3, supplemental: true)
+1000.times do |n|
+  message = Faker::TvShows::Community.quotes
   post_id = Post.pluck(:id).sample
   user_id = User.pluck(:id).sample
   Comment.create!(

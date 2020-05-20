@@ -1,20 +1,24 @@
-<p>
-  <strong><%= comment.user.username %> said:</strong>
-  <br>
-  <%= comment.message %>
-</p>
-<% if user_signed_in? %>
-  <div class="columns">
-    <div class="column is-1">
-      <%= link_to 'Edit Comment', [comment], class: "button is-warning is-small" if comment.user_id == current_user.id %>
-    </div>
-    <div class="column is-offset-1">
-      <%= link_to 'Delete Comment', [comment],
-        method: :delete,
-        class: "button is-danger is-small",
-        data: { confirm: 'Are you sure?' } if comment.user_id == current_user.id %>
-    </div>
-  </div>
+<% if comment.user.blank? %>
+  <p>This commented has been removed.</p>
 <% else %>
+  <p>
+    <strong><%= comment.user.username %> said:</strong>
+    <br>
+    <%= comment.message %>
+  </p>
+  <% if user_signed_in? %>
+    <div class="columns">
+      <div class="column is-1">
+        <%= link_to 'Edit Comment', [comment], class: "button is-warning is-small" if comment.user_id == current_user.id %>
+      </div>
+      <div class="column is-offset-1">
+        <%= link_to 'Delete Comment', [comment],
+          method: :delete,
+          class: "button is-danger is-small",
+          data: { confirm: 'Are you sure?' } if comment.user_id == current_user.id %>
+      </div>
+    </div>
+  <% else %>
+  <% end %>
 <% end %>
 <hr>
