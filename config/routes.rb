@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get :all_posts, path: '/all-posts'
     end
   end
+
   resources :comments, except: [:index]
+  resources :contact, only: [:index, :new, :create]
 
 end

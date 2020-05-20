@@ -40,6 +40,11 @@
       </div>
       <br>
       <p>Already have an account? <%= link_to 'Log in here', new_session_path(resource_name) %> instead!</p>
+      <hr>
+      <p>Just wanting to have a look around as a user?</p>
+      <p><%= link_to 'Log in', new_session_path(resource_name) %> using these credentials:</p>
+      <p>Email: user@email.com</p>
+      <p>Password: password</p>
     </div>
   </div>
 <% end %>

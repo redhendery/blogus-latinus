@@ -15,6 +15,7 @@
       <div class="navbar-end">
         <% if user_signed_in? %>
           <%= link_to 'About', about_path, class: 'navbar-item' %>
+          <%= link_to 'Contact', contact_index_path, class: 'navbar-item' %>
           <%= link_to 'Users', users_path, class: 'navbar-item' %>
           <%= link_to 'Posts', posts_path, class: 'navbar-item' %>
           <%= link_to 'My Profile', user_path(current_user), class: 'navbar-item' %>
@@ -22,6 +23,7 @@
           <%= link_to 'Check Out The Code Here', 'https://github.com/redhendery/blogus-latinus', target: 'blank', class: 'navbar-item' %>
         <% else %>
           <%= link_to 'About', about_path, class: 'navbar-item' %>
+          <%= link_to 'Contact', contact_index_path, class: 'navbar-item' %>
           <%= link_to 'Users', users_path, class: 'navbar-item' %>
           <%= link_to 'Posts', posts_path, class: 'navbar-item' %>
           <%= link_to 'Sign Up', new_user_registration_url, class: 'navbar-item' %>
