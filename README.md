@@ -6,7 +6,6 @@ A Blog Site based off of a spec for a Tech Screen I did for a job interview. Bui
 <li>Bulma CSS</li>
 <li>Webpack</li>
 <li>MongoDB</li>
-<li>MongoDB</li>
 <li>Ruby version 2.7.1</li>
 <li>Node version 12.16.1</li>
 <li>Ruby on Rails version 6.0.2.2</li>
@@ -35,5 +34,7 @@ https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/
 
 
 You can create a user if you wish to, or there is a user seeded with the database as follows:
+<pre><code>
 username: user@email.com
 password: password
+</pre></code>
